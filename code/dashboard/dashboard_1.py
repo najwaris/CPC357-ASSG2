@@ -31,6 +31,7 @@ app.layout = html.Div(
             ],
             style={"textAlign": "center", "fontSize": "18px", "color": "#666"},
         ),
+        
         # Dropdown to select sensors
         html.Div(
             style={"textAlign": "center", "marginBottom": "20px"},
@@ -48,6 +49,7 @@ app.layout = html.Div(
                 )
             ],
         ),
+        
         dcc.Interval(id="interval", interval=300000, n_intervals=0),  # Auto-refresh every 5 minutes
         dcc.Graph(id="live-graph"),
     ],
@@ -57,7 +59,9 @@ app.layout = html.Div(
     Output("live-graph", "figure"),
     [Input("interval", "n_intervals"), Input("sensor-dropdown", "value")],
 )
+
 def update_graph(n_intervals, selected_sensors):
+    
     # Fetch the latest data from MongoDB
     cursor = collection.find().sort("timestamp", -1).limit(50)  # Get the last 50 entries
     data = list(cursor)
