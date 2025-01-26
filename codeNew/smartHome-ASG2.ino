@@ -1,9 +1,7 @@
 /*
 Smart Indoor Air Quality Monitoring and Alert System - Assignment 2
 */
-
 #include <WiFi.h>
-// #include <WiFiClientSecure.h>
 #include <PubSubClient.h>
 #include "DHT.h"
 #define DHTTYPE DHT11
@@ -12,11 +10,12 @@ Smart Indoor Air Quality Monitoring and Alert System - Assignment 2
 const char* WIFI_SSID = "HouseMates";
 const char* WIFI_PASSWORD = "csweet950805";
 
+// MQTT credentials 
 const char* MQTT_USERNAME = "CPC357_ASG2";
 const char* MQTT_PASSWORD = "iffnaj357";
 
 // GCP MQTT details
-const char* MQTT_SERVER = "34.171.140.11";
+const char* MQTT_SERVER = "34.171.140.11";    // External IP addres for the VM 
 const char* MQTT_TOPIC = "iot";
 const int MQTT_PORT = 1883;
 
@@ -27,7 +26,6 @@ const int redLedPin = 9;
 const int greenLedPin = 5;
 const int buzzerPin = 12;
 const int relayPin = 39;
-// const int propellerPin = X;
 const int buttonPin = 38;
 
 // Threshold value
@@ -41,8 +39,6 @@ DHT dht(dht11Pin, DHTTYPE);
 
 WiFiClient espClient;
 PubSubClient client(espClient);
-// WiFiClientSecure espClientSecure;
-// PubSubClient client(espClientSecure);
 
 unsigned long sensorInterval = 900000;  // 15 minutes by default
 unsigned long lastMsgTime = 0;
