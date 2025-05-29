@@ -1,4 +1,4 @@
-# CPC357-ASSG2
+# Smart Indoor Air Quality Monitoring and Alert System
 A simple Smart Indoor Air Quality Monitoring and Alert System
 
 ## How it work
